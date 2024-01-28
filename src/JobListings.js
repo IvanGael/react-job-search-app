@@ -6,14 +6,14 @@ import CircularProgressIndicator from './CircularProgressIndicator';
 
 const JobListings = () => {
     const [jobs, setJobs] = useState([]);
-    const [visibleJobs, setVisibleJobs] = useState(5);
+    const [visibleJobs, setVisibleJobs] = useState(1);
     const [searchTerm, setSearchTerm] = useState('');
     const [loading, setLoading] = useState(false);
 
     useEffect(() => {
         const fetchJobs = async () => {
             try {
-                const response = await axios.get('https://himalayas.app/jobs/api?limit=100');
+                const response = await axios.get('https://himalayas.app/jobs/api?limit=150');
                 setJobs(response.data.jobs);
             } catch (error) {
                 console.error('Error fetching job data:', error);
@@ -27,7 +27,7 @@ const JobListings = () => {
         setLoading(true);
         setTimeout(() => {
             setLoading(false);
-            setVisibleJobs((prevVisibleJobs) => prevVisibleJobs + 5);
+            setVisibleJobs((prevVisibleJobs) => prevVisibleJobs + 1);
         }, 1000);
     };
 
@@ -36,6 +36,10 @@ const JobListings = () => {
             job.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
             job.companyName.toLowerCase().includes(searchTerm.toLowerCase())
     );
+
+    const changeWord = (word) => {
+        return filteredJobs.length > 1 ? `${word}s` : `${word}`;
+    }
 
     return (
         <>
@@ -48,21 +52,21 @@ const JobListings = () => {
                 />
             </div>
             <div>
-                <h4>{filteredJobs.length} jobs found</h4>
+                <h4>{filteredJobs.length} {changeWord("job")} found</h4>
             </div>
             <div className="job-listings">
                 {filteredJobs.slice(0, visibleJobs).map((job) => (
                     <JobCard key={job.guid} job={job} />
                 ))}
-                {
+                {/* {
                     filteredJobs.length === 0 ?
                         <h3>No job found</h3> : null
-                }
+                } */}
             </div>
             <div className='justify-circular-progress-indicator'>
                 {
                     loading === true &&
-                    <CircularProgressIndicator size={30} color="crimson" strokeWidth={4} />
+                    <CircularProgressIndicator size={40} color="crimson" strokeWidth={4} />
                 }
             </div>
             {visibleJobs < filteredJobs.length && (
