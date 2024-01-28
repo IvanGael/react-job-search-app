@@ -1,0 +1,91 @@
+/* App.css */
+
+.app {
+  text-align: center;
+  margin: 20px;
+}
+
+.job-listings {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  position: relative; /* Relative positioning for the Load More button */
+}
+
+.job-card {
+  border: 1px solid #ddd;
+  margin: 10px;
+  padding: 10px;
+  max-width: 300px;
+  text-align: left;
+  background-color: darkslateblue;
+  color: white;
+  box-shadow: 0 2px 4px grey;
+}
+
+.job-card img {
+  width: 100%;
+  height: auto;
+}
+
+.job-details {
+  margin-top: 10px;
+}
+
+.job-card a {
+  display: flex;
+  align-self: center;
+  justify-self: center;
+  margin-top: 10px;
+  text-decoration: none;
+  color: white;
+  background-color: crimson;
+  border-radius: 10px;
+  width: 80px;
+  height: 30px;
+  padding: 5px;
+}
+
+.load-more-button {
+  background-color: black;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  margin: 20px auto; /* Center the button horizontally */
+  border-radius: 5px;
+  box-shadow: 0 2px 4px grey;
+  cursor: pointer;
+}
+
+.justify-load-more-button {
+  display: flex;
+  align-self: center;
+  justify-self: center;
+}
+
+.load-more-button:hover {
+  background-color: black;
+}
+
+
+.search-bar {
+  margin: 20px 0;
+}
+
+.search-bar input {
+  width: 90%;
+  padding: 10px;
+  border: 2px solid #ddd;
+  border-radius: 10px;
+  outline: none;
+}
+
+.search-bar input:focus {
+  border-color: darkslateblue;
+}
+
+.justify-circular-progress-indicator {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

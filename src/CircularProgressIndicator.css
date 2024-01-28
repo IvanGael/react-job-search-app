@@ -1,0 +1,24 @@
+/* CircularProgressIndicator.css */
+.circular-progress {
+    display: block;
+    animation: rotate 0.5s linear infinite; /* Animation for rotation */
+  }
+  
+  .circular-progress-background {
+    fill: none;
+    stroke: #ddd; /* Background color */
+  }
+  
+  .circular-progress-foreground {
+    fill: none;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    transition: stroke-dashoffset 0.3s ease-in-out;
+  }
+  
+  @keyframes rotate {
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+  
