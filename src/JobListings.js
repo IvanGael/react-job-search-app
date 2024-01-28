@@ -25,9 +25,9 @@ const JobListings = () => {
 
     const loadMoreJobs = () => {
         setLoading(true);
-        setVisibleJobs((prevVisibleJobs) => prevVisibleJobs + 5);
         setTimeout(() => {
             setLoading(false);
+            setVisibleJobs((prevVisibleJobs) => prevVisibleJobs + 5);
         }, 1000);
     };
 
