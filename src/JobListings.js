@@ -6,7 +6,7 @@ import CircularProgressIndicator from './CircularProgressIndicator';
 
 const JobListings = () => {
     const [jobs, setJobs] = useState([]);
-    const [visibleJobs, setVisibleJobs] = useState(1);
+    const [visibleJobs, setVisibleJobs] = useState(10);
     const [searchTerm, setSearchTerm] = useState('');
     const [loading, setLoading] = useState(false);
 
@@ -27,7 +27,7 @@ const JobListings = () => {
         setLoading(true);
         setTimeout(() => {
             setLoading(false);
-            setVisibleJobs((prevVisibleJobs) => prevVisibleJobs + 1);
+            setVisibleJobs((prevVisibleJobs) => prevVisibleJobs + 10);
         }, 1000);
     };
 
@@ -71,9 +71,12 @@ const JobListings = () => {
             </div>
             {visibleJobs < filteredJobs.length && (
                 <div className="justify-load-more-button">
-                    <button onClick={loadMoreJobs} className="load-more-button">
-                        Load More
-                    </button>
+                    {
+                        loading === false &&
+                        <button onClick={loadMoreJobs} className="load-more-button" >
+                            Load More
+                        </button>
+                    }
                 </div>
             )}
 
